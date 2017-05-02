@@ -30,12 +30,10 @@ public class BookingCodeViewBean {
 
 
     public void getBookingInfo(){
-        System.out.println("Inside of getBokingInfo()!!!");
-        response = onlineBookingService.getBookingInfo(code);
+        response = onlineBookingService.getBookingInfo(code.trim());
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         try {
             if(response.getErrorMessage() == null) {
-                System.out.println("getBookingInfo() -> OK!!!");
                 context.redirect("mybooking.xhtml");
             }else{
                 code = null;
@@ -44,15 +42,14 @@ public class BookingCodeViewBean {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //return "mybooking";
     }
 
     public void cancelReservation(){
         CancellationResponse cancellationResponse = null;
         if(response != null && response.getErrorMessage() == null){
-            cancellationResponse = onlineBookingService.cancelReservationWithoutValidation(code);
+            cancellationResponse = onlineBookingService.cancelReservationWithoutValidation(code.trim());
         }else{
-            cancellationResponse = onlineBookingService.cancelReservation(code);
+            cancellationResponse = onlineBookingService.cancelReservation(code.trim());
         }
         FacesContext context = FacesContext.getCurrentInstance();
         if(cancellationResponse.getErrorMessage() == null){
@@ -88,8 +85,7 @@ public class BookingCodeViewBean {
     public String clear(){
         code  = null;
         response = null;
-        System.out.println("From CLEAR()!!!");
-        return "index";
+        return "main";
     }
 
     public String goToMainPage(){

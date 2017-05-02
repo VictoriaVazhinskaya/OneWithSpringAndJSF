@@ -30,8 +30,5 @@ public class ScheduleViewBean {
         return seances;
     }
 
-    public String getMessage(){
-        return "//-----Pina Colada----//";
-    }
 
 }

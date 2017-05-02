@@ -20,7 +20,7 @@
 
     <!-- Welcome page -->
     <welcome-file-list>
-        <welcome-file>index.jsf</welcome-file>
+        <welcome-file>main.jsf</welcome-file>
     </welcome-file-list>
 
     <!-- JSF Mapping -->
@@ -37,6 +37,5 @@
         <servlet-name>facesServlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
-
 
 </web-app>

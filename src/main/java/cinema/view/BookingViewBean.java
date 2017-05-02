@@ -28,10 +28,7 @@ public class BookingViewBean {
     }
 
     public String reserve(int seanceId, String seatsSequence){
-        //System.out.println("seats: " + seatsSequence + ", id: " + seanceId);
-        System.out.println(seanceId + "<- seanceId");
         response = onlineBookingService.reserve(seatsSequence.trim(), seanceId);
-        //System.out.println(response.);
         return "booking_code";
     }
 }
