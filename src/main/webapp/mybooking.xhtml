@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <ui:param name="film" value="#{bookingCodeViewBean.response.booking.seance.film}"/>
+    <ui:param name="seats" value="#{bookingCodeViewBean.response.booking.reservedSeats}"/>
+    <h:outputText value="#{film.name}, #{film.year}, #{film.genre}"></h:outputText>
+    <br/>
+    <h:outputText value="Your seats: "/>
+    <ui:repeat value="#{bookingCodeViewBean.response.booking.reservedSeats}" var="s">
+        <h:outputText value="#{s}, "/>
+    </ui:repeat>
+    <br/>
+    <h:form style="display: #{bookingCodeViewBean.response.errorMessage == null? 'block' : 'none'}">
+        <p:commandButton value="Cancel reservation" action="#{bookingCodeViewBean.cancelReservation()}"/>
+    </h:form>
+    <h:form>
+        <p:commandButton value="Go to Main"  action="#{bookingCodeViewBean.goToMainPage}"/>
+    </h:form>
+</h:body>
+</html>

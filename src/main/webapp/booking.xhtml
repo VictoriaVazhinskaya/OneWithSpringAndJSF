@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:body>
+    <h1>#{seanceInfoViewBean.seance.film.name}</h1>
+    <h:outputText value="You can make a reservation of seats from 1 to 225 except of the following seats: "/>
+    <ui:repeat var="s" value="#{seanceInfoViewBean.alreadyReserved}">
+        <h:outputText value="#{s}, " />
+    </ui:repeat>
+    <br/>
+    <br/>
+    <h:form>
+        <h:outputText value="Seats: " />
+        <p:inputText id="seats" title="Input numbers of seats you want to reserve through a space"  binding="#{seats_sequence}"/>
+        <p:tooltip for="seats" showEvent="focus" hideEvent="blur" />
+        <p:commandButton value="Submit" action="#{bookingViewBean.reserve(seanceInfoViewBean.seance.id, seats_sequence.value)}"/>
+    </h:form>
+</h:body>
+</html>
